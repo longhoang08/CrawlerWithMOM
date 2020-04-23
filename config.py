@@ -38,11 +38,11 @@ MAIL_USE_SSL = True
 MAIL_USERNAME = os.environ['EMAIL_USER']
 MAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 
-
 # KAFKA config
 KAFKA_HOST = os.getenv('KAFKA_HOST', 'localhost')
 KAFKA_PORT = os.getenv('KAFKA_PORT', 9092)
 KAFKA_URL = "{}:{}".format(KAFKA_HOST, KAFKA_PORT)
+KAFKA_TOPIC = 'under-pressure'
 CLIENT_ID = "crawler-bot"
 
 def _env(name, default):

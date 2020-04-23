@@ -32,3 +32,9 @@ class Crawler(flask_restplus.Resource):
         data = request.args or request.json
         services.crawler.register_new_crawlers(**data)
         return "OK"
+
+
+@ns.route('/listen', methods=['GET'])
+class Crawler(flask_restplus.Resource):
+    def get(self):
+        services.url_consumer.listen()

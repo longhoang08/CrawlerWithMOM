@@ -3,7 +3,7 @@ import flask_sqlalchemy
 import flask_bcrypt
 
 from dotenv import load_dotenv
-from kafka import KafkaAdminClient
+from kafka import KafkaAdminClient, KafkaProducer
 
 from config import _DOT_ENV_PATH, KAFKA_URL, CLIENT_ID
 
@@ -15,6 +15,8 @@ bcrypt = flask_bcrypt.Bcrypt()
 admin_client = KafkaAdminClient(
     bootstrap_servers=KAFKA_URL,
     client_id=CLIENT_ID)
+kafka_producer = KafkaProducer(bootstrap_servers=KAFKA_URL,
+                               client_id=CLIENT_ID)
 
 
 def init_app(app, **kwargs):
