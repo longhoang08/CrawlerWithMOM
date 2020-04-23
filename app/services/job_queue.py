@@ -2,15 +2,15 @@
 from typing import List
 
 from kafka.admin import NewTopic
-from config import KAFKA_TOPIC
 
+from config import KAFKA_TOPIC
 from ..models import admin_client, kafka_producer
 
 
 def crawl_data_from_urls(urls: List[str]):
     # Add request to job queue
     for url in urls:
-        print('Receiving', url)
+        print('Pushing', url, 'to queue')
         url_bytes = bytes(url, encoding='utf-8')
         kafka_producer.send(KAFKA_TOPIC, value=url_bytes, key=url_bytes)
     return "DONE"
