@@ -11,5 +11,5 @@ def listen():
 
     for msg in consumer:
         url = msg.value.decode("utf-8")
-        print('fucking bitch', url)
+        print('Receiving', url, 'from queue')
         data.create_or_update_crawler_data(url, *crawler.crawl(url))
