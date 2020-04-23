@@ -9,3 +9,10 @@ load_dotenv(_DOT_ENV_PATH)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+@app.cli.command("url-consumer")
+def url_consumer():
+    from app import services
+    print("Consumer is listening")
+    services.url_consumer.listen()
