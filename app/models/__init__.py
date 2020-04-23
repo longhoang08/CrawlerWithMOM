@@ -25,3 +25,4 @@ def init_app(app, **kwargs):
 
 from .base import TimestampMixin
 from .data import Data
+from .url import Url
