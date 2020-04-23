@@ -9,6 +9,7 @@ def save_url_to_database(**kwargs) -> Url:
 
 def save(url: Url) -> Url:
     models.db.session.add(url)
+    models.db.session.commit()
     return url
 
 

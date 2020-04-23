@@ -8,6 +8,7 @@ def save_data_to_database(**kwargs) -> models.Data:
 
 def save(data: models.Data) -> models.Data:
     models.db.session.add(data)
+    models.db.session.commit()
     return data
 
 
