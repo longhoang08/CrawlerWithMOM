@@ -3,11 +3,10 @@ from app import models
 
 def save_data_to_database(**kwargs) -> models.Data:
     user = models.Data(**kwargs)
-    models.db.session.add(user)
-    return user
+    return save(user)
 
 
-def update_existed_data(data: models.Data) -> models.Data:
+def save(data: models.Data) -> models.Data:
     models.db.session.add(data)
     return data
 
@@ -15,6 +14,14 @@ def update_existed_data(data: models.Data) -> models.Data:
 def find_by_url(url: str) -> models.Data:
     data = models.Data.query.filter(
         models.Data.url == url
+    ).first()
+
+    return data or None
+
+
+def find_by_id(id: int) -> models.Data:
+    data = models.Data.query.filter(
+        models.Data.id == id
     ).first()
 
     return data or None
