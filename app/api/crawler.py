@@ -22,5 +22,5 @@ class Crawler(flask_restplus.Resource):
     @ns.expect(_crawl_request)
     def post(self):
         data = request.args or request.json
-        services.job_queue.crawl_data_from_urls(**data)
+        services.crawler.register_new_crawlers(**data)
         return "OK"
