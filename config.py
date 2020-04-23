@@ -17,17 +17,11 @@ LOGGING_CONFIG_FILE = os.path.join(ROOT_DIR, 'etc', 'logging.ini')
 
 FLASK_APP_SECRET_KEY = os.getenv('SECRET_KEY', 'secret_key')
 
+# Mysql config
 MYSQL_DATABASE = os.getenv('MYSQL_DATABASE')
 MYSQL_HOST = os.getenv('MYSQL_HOST')
 MYSQL_USER = os.getenv('MYSQL_USER')
 MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
-
-MAIL_SERVER = 'smtp.gmail.com'
-MAIL_PORT = 465
-MAIL_USE_TLS = False
-MAIL_USE_SSL = True
-MAIL_USERNAME = os.environ['EMAIL_USER']
-MAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
 
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}:{3}/{4}'.format(
     MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, 3306, MYSQL_DATABASE
@@ -36,6 +30,20 @@ SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://{0}:{1}@{2}:{3}/{4}'.format(
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_COMMIT_ON_TEARDOWN = True
 
+# Mail server config
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
+MAIL_USERNAME = os.environ['EMAIL_USER']
+MAIL_PASSWORD = os.environ['EMAIL_PASSWORD']
+
+
+# KAFKA config
+KAFKA_HOST = os.getenv('KAFKA_HOST', 'localhost')
+KAFKA_PORT = os.getenv('KAFKA_PORT', 9092)
+KAFKA_URL = "{}:{}".format(KAFKA_HOST, KAFKA_PORT)
+CLIENT_ID = "crawler-bot"
 
 def _env(name, default):
     """ Get configuration from environment in priorities:
