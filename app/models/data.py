@@ -14,7 +14,7 @@ class Data(db.Model, TimestampMixin):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     url = db.Column(db.String(255), unique=True)
-    crawler_data = db.Column(db.Text, nullable=False, unique=False)
+    crawler_data = db.Column(db.Text(4294000000), nullable=False, unique=False)
 
     def to_dict(self) -> dict:
         return {
