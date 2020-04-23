@@ -2,17 +2,14 @@
 from typing import List
 
 from kafka.admin import NewTopic
-
-from config import KAFKA_TOPIC
-from ..models import admin_client, kafka_producer
+from app import repositories as repo
+from ..models import admin_client
 
 
 def crawl_data_from_urls(urls: List[str]):
     # Add request to job queue
     for url in urls:
-        print('Pushing', url, 'to queue')
-        url_bytes = bytes(url, encoding='utf-8')
-        kafka_producer.send(KAFKA_TOPIC, value=url_bytes, key=url_bytes)
+        repo.kafka.push_into_kafka(url)
     return "DONE"
 
 
