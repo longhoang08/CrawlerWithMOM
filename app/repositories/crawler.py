@@ -7,8 +7,6 @@ from app import helpers
 
 
 def crawl(entered_url: str) -> Tuple[str, str]:
-    # TODO: crawl data from url
-    # requests.
     urls = helpers.url.get_urls(entered_url)
     for url in urls:
         try:
